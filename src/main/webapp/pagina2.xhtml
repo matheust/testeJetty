@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+
+<html xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<h:head>
+	<title>Argentum Web</title>
+
+</h:head>
+<h:body onload="limpaCampos();">
+	<h:messages ></h:messages>
+	
+	<h:form id="frm">
+		
+		<div align="center">
+
+			<h1>Cálculo da Média</h1>
+			<br />
+			<h:panelGrid columns="2">
+				<h:outputLabel value="Número 1: " />
+				<h:inputText id="num1" required="true" value="#{media.media.num1}">
+					<f:convertNumber integerOnly="true" type="number" />
+				</h:inputText>
+
+
+				<h:outputLabel value="Número 2: " />
+				<h:inputText id="num2" required="true" value="#{media.media.num2}" />
+
+				<h:outputLabel value="Resultado: " />
+				<h:outputText id="media" value="#{media.media.media}" />
+			</h:panelGrid>
+			<br />
+			<h:panelGrid style="margin-left:41px;" columns="2">
+				<h:commandButton  value="Calcular" action="#{media.calculaMedia}"   >
+					
+				</h:commandButton>
+				<h:button value="Sair"></h:button>
+			</h:panelGrid>
+
+			<h:dataTable value="#{media.lista}" var="list">
+
+				<h:column>
+					<h:outputText value="#{list}" />
+				</h:column>
+
+
+			</h:dataTable>
+
+		</div>
+	</h:form>
+
+	<script>
+		//var v = document.getElementById("frm:num1").value;
+		function limpaCampos() {
+			document.getElementById("frm:num1").value = "";
+			document.getElementById("frm:num2").value = "";
+			document.getElementById("frm:media").value = "";
+		}
+	</script>
+</h:body>
+
+</html>
